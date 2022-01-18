@@ -4,7 +4,7 @@ public:
      
         int res=1;
         int s=0;
-        map<int,int> last;
+        unordered_map<int,int> last;
         last[nums[0]]=0;
         for(int j=1; j < nums.size();j++){
             bool found=true;
@@ -13,12 +13,10 @@ public:
                if(abs(nums[j]-ent.first) > limit){
                    found=false;
                    newStart=max(newStart,ent.second);
-                   //break;
                }             
             }
             if(!found){
                 res=max(res,j-s);
-                //cout<<res<<" "<<j<<endl;
                 while(s < newStart+1){
                     if(last[nums[s]]==s)last.erase(nums[s]);
                     s++;
