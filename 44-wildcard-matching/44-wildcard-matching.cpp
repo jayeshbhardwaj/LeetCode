@@ -9,13 +9,12 @@ public:
             //cout<<i<<" "<<j<<endl;
            //check base case
             if(j==p.length()) return i==s.length(); //if pattern is exhausted string should be exhausted
-            
+            if(i > s.length()) return false;
             //check memo value
             if(dp[i][j]!=-1)return dp[i][j]==1;
             
             //else compute recursively
             bool ans=false;
-            if(i > s.length()) return false;
             if(i < s.length() && s[i]==p[j] || p[j]=='?')
                 ans = rec(i+1,j+1);
             else if(p[j]=='*'){
